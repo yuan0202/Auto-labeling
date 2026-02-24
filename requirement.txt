@@ -1,0 +1,25 @@
+# --- GUI 框架 ---
+PyQt6>=6.4.0
+
+# --- 影像處理 ---
+# 使用 opencv-python-headless 可減少部署體積 (若不需官方內建 GUI 視窗)
+# 但因為我們是桌面開發，維持使用 opencv-python
+opencv-python>=4.8.0
+
+# --- 數據處理 ---
+numpy>=1.24.0
+
+# OCR 文字辨識 (核心)
+easyocr>=1.7.1
+
+# 瘦身版打包專用：安裝 CPU 版 PyTorch 以縮減體積
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+torchaudio
+
+# --- 其他輔助 (建議加入) ---
+# 確保在讀取中文路徑或處理不同作業系統路徑時的相容性
+pathlib>=1.0.1
+# 若未來需要打包成 .exe 執行檔
+pyinstaller>=6.0.0
