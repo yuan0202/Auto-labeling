@@ -15,6 +15,7 @@ Our framework introduces a semi-automated pipeline leveraging **Spatial Similari
 * **Stable Threshold (±5%):** Images with a geometric offset error within ±5% of a group's base image are assigned to that group, ensuring high intra-group similarity.
 * **Outlier Isolation:** Images failing to match any group (offset > ±5%) are isolated into a dedicated Outlier Pool for manual review, ensuring clean data for the automated track.
 
+'''mermaid
 graph TD
     A[Input Unannotated Image] --> B{Calculate Geometric<br>Offset Error}
     B -- "Error ≤ ±5%" --> C[Assign to Stable Group]
