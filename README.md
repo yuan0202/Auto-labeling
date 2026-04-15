@@ -15,6 +15,16 @@ Our framework introduces a semi-automated pipeline leveraging **Spatial Similari
 * **Stable Threshold (±5%):** Images with a geometric offset error within ±5% of a group's base image are assigned to that group, ensuring high intra-group similarity.
 * **Outlier Isolation:** Images failing to match any group (offset > ±5%) are isolated into a dedicated Outlier Pool for manual review, ensuring clean data for the automated track.
 
+graph TD
+    A[Input Unannotated Image] --> B{Calculate Geometric<br>Offset Error}
+    B -- "Error ≤ ±5%" --> C[Assign to Stable Group]
+    C --> E[Proceed to Stage 2:<br>Automated Labeling & OCR]
+    B -- "Error > ±5%<br>(No Match Found)" --> D[Outlier Pool]
+    D --> F[Wait for Manual Intervention<br>(Ensures Data Cleanliness)]
+    
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#ffcccc,stroke:#f00,stroke-width:2px
+
 ### Stage 2: Bootstrap & Automated Labeling Loop
 * **Group Bootstrap:** The first image of every stable group requires manual annotation to establish the bounding box and OCR reference (Anchor).
 * **Automated Propagation:** For the remaining images, the system:
